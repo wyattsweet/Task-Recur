@@ -1,0 +1,10 @@
+@import url('../styles/index.css');
+
+.button {
+  border: 1px solid var(--color-grey-p);
+}
+
+.occurrences {
+  display: inline-block;
+  margin-left: 12px;
+}

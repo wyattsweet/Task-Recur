@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700');
+@import url('../styles/index.css');
+
+body {
+  color: var(--color-black-p);
+  font-family: 'Hind', sans-serif;
+  font-size: 18px;
+  font-weight: var(--font-weight-regular);
+  margin: 0;
+}
+
+h1 {
+  font-weight: var(--font-weight-bold);
+  font-size: 2em;
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}

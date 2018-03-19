@@ -1,0 +1,10 @@
+@import url('../styles/index.css');
+
+.header {
+  background: var(--color-primary-d);
+}
+
+.mainText {
+  line-height: 60px;
+  vertical-align: middle;
+}

@@ -1,0 +1,19 @@
+:root {
+  --color-primary-l: #c1d5e0;
+  --color-primary: #90a4ae;
+  --color-primary-d: #62757f;
+
+  --color-secondary-l: #768fff;
+  --color-secondary: #2962ff;
+  --color-secondary-d: #0039cb;
+
+  --color-black-l: #484848;
+  --color-black-p: #212121;
+  --color-black-d: #000000;
+
+  --color-grey-l: #8e8e8e;
+  --color-grey-p: #616161;
+  --color-grey-d: #373737;
+
+  --color-white-l: #ffffff;
+}

@@ -1,0 +1,47 @@
+@import url('../styles/index.css');
+
+.toggle {
+  display: inline-block;
+  height: 20px;
+  margin-left: 8px;
+  position: relative;
+  vertical-align: middle;
+}
+
+.input {
+  cursor: pointer;
+  position: absolute;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  z-index: 5;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.togglr {
+  background: var(--color-primary-l);
+  border-radius: 46px;
+  display: inline-block;
+  height: 20px;
+  position: relative;
+  width: 50px;
+}
+.input:checked + .togglr:after {
+  background: var(--color-secondary);
+  left: 30px;
+}
+
+.togglr::after {
+  background: var(--color-secondary-l);
+  border-radius: 46px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  content: '';
+  display: inline-block;
+  height: 20px;
+  position: absolute;
+  width: 20px;
+  left: 0;
+  transition: left 0.4s;
+}

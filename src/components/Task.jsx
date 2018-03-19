@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Toggle from './Toggle';
+
 import styles from './Task.css';
 
 const createCheckboxes = (
@@ -37,10 +39,11 @@ const Task = props => {
     id,
     occurrences,
     occurrencesRemaining,
+    recurring,
     title,
     timeFrame
   } = props.task;
-  const { decrementOnClick, incrementOnClick } = props;
+  const { decrementOnClick, incrementOnClick, toggleOnClick } = props;
   return (
     <li>
       <label htmlFor="occurrenceBlock">
@@ -67,6 +70,7 @@ const Task = props => {
           </button>
         </div>
       </label>
+      <Toggle taskId={id} onClick={toggleOnClick} recurring={recurring} />
     </li>
   );
 };

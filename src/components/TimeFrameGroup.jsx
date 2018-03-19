@@ -48,6 +48,7 @@ class TimeFrameGroup extends React.Component {
                 task={task}
                 decrementOnClick={this.props.decrementOnClick}
                 incrementOnClick={this.props.incrementOnClick}
+                toggleOnClick={this.props.toggleOnClick}
               />
             );
           })}

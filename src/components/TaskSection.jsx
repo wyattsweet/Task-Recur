@@ -1,12 +1,13 @@
 import React from 'react';
 
 import {
-  getAllTasks,
-  postTask,
-  incrementOccurrences,
   decrementOccurrences,
+  decrementRemainingOccurrences,
+  getAllTasks,
+  incrementOccurrences,
   incrementRemainingOccurrences,
-  decrementRemainingOccurrences
+  postTask,
+  updateTask
 } from '../helpers/tasksData';
 
 import styles from './TaskSection.css';
@@ -52,6 +53,13 @@ class TaskSection extends React.Component {
     this.setState({ tasks: allTasks });
   }
 
+  toggleOnClick(e) {
+    const recurring = e.target.checked;
+    const { id } = e.target.dataset;
+
+    updateTask({ id, recurring });
+  }
+
   selectTasksByTimeFrame(timeFrame) {
     return this.state.tasks.filter(task => {
       return timeFrame === task.timeFrame;
@@ -90,7 +98,8 @@ class TaskSection extends React.Component {
         inputRef: el => (this.inputField[group] = el),
         checkboxOnClick: TaskSection.checkboxOnClick,
         decrementOnClick: this.decrementOnClick,
-        incrementOnClick: this.incrementOnClick
+        incrementOnClick: this.incrementOnClick,
+        toggleOnClick: this.toggleOnClick
       });
     });
     return <main className={styles.main}>{children}</main>;

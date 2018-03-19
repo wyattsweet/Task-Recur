@@ -28,10 +28,10 @@ function getTask(taskId) {
   return taskList[0];
 }
 
-function updateTask(updatedTask) {
+export function updateTask(updatedTask) {
   for (let i = 0; i < tasks.length; i += 1) {
-    if (updatedTask.id === tasks[i].id) {
-      tasks[i] = updatedTask;
+    if (updatedTask.id == tasks[i].id) {
+      tasks[i] = { ...tasks[i], ...updatedTask };
     }
   }
   localStorage.setItem('tasks', stringify(tasks));

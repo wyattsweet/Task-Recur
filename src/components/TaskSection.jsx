@@ -21,71 +21,64 @@ class TaskSection extends React.Component {
       : incrementRemainingOccurrences(id);
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      tasks: [],
-      groupWithActiveButton: null
-    };
-    this.inputField = {};
-    this.addTask = this.addTask.bind(this);
-    this.onAddButtonClick = this.onAddButtonClick.bind(this);
-    this.getUpdatedTasks = this.getUpdatedTasks.bind(this);
-    this.incrementOnClick = this.incrementOnClick.bind(this);
-    this.decrementOnClick = this.decrementOnClick.bind(this);
-  }
+  state = {
+    tasks: [],
+    groupWithActiveButton: null
+  };
+
+  inputField = {};
 
   componentDidMount() {
     this.getUpdatedTasks();
   }
 
-  onAddButtonClick(e) {
+  onAddButtonClick = e => {
     const {
       group = e.target.parentNode.parentNode.dataset.group
     } = e.target.parentNode.dataset;
     this.setState({ groupWithActiveButton: group }, () => {
       this.inputField[group].focus();
     });
-  }
+  };
 
-  getUpdatedTasks() {
+  getUpdatedTasks = () => {
     const allTasks = getAllTasks();
     this.setState({ tasks: allTasks });
-  }
+  };
 
-  toggleOnClick(e) {
+  toggleOnClick = e => {
     const recurring = e.target.checked;
     const { id } = e.target.dataset;
 
     updateTask({ id, recurring });
-  }
+  };
 
-  selectTasksByTimeFrame(timeFrame) {
+  selectTasksByTimeFrame = timeFrame => {
     return this.state.tasks.filter(task => {
       return timeFrame === task.timeFrame;
     });
-  }
+  };
 
-  addTask(task) {
+  addTask = task => {
     const { tasks: allTasks } = this.state;
     this.setState({
       groupWithActiveButton: null,
       tasks: [...allTasks, task]
     });
     postTask(this.state.tasks, task);
-  }
+  };
 
-  incrementOnClick(e) {
+  incrementOnClick = e => {
     const { id } = e.target.dataset;
     incrementOccurrences(id);
     this.getUpdatedTasks();
-  }
+  };
 
-  decrementOnClick(e) {
+  decrementOnClick = e => {
     const { id } = e.target.dataset;
     decrementOccurrences(id);
     this.getUpdatedTasks();
-  }
+  };
 
   render() {
     const children = React.Children.map(this.props.children, child => {

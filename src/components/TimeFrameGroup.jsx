@@ -41,6 +41,10 @@ class TimeFrameGroup extends React.Component {
         <h2 className={styles.title}>{`${this.props.group} Tasks`}</h2>
         <ul>
           {this.props.tasks.map(task => {
+            // is new day
+            // is new week
+            // is new month
+            // if so, reset recurring tasks
             return (
               <Task
                 checkboxOnClick={this.props.checkboxOnClick}

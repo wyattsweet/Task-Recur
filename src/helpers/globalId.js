@@ -1,15 +1,18 @@
-function getCurrentId() {
-  const currentId = localStorage.getItem('globalId');
-  return currentId ? parseInt(currentId, 10) : 0;
-}
-const globalId = getCurrentId();
-
-function postNewId(id) {
+const postNewId = id => {
   localStorage.setItem('globalId', JSON.stringify(id));
-}
+};
+
+const getCurrentId = () => {
+  const currentId = localStorage.getItem('globalId');
+  if (currentId) {
+    return parseInt(currentId, 10);
+  }
+  postNewId(0);
+  return 0;
+};
 
 export function getNewId() {
-  let id = globalId;
+  let id = getCurrentId();
   id += 1;
   postNewId(id);
   return id;

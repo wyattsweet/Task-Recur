@@ -1,12 +1,12 @@
 const date = new Date();
 
-function postNewDay() {
+export function postNewDay() {
   const calDate = date.getDate();
-  const month = date.getMonth();
+  const month = date.getMonth() + 1;
   localStorage.setItem('dayOfWeek', JSON.stringify({ month, date: calDate }));
 }
 
-function postNewWeek() {
+export function postNewWeek() {
   const day = date.getDay();
   const lastDayOfMonth = new Date(
     date.getFullYear(),
@@ -31,11 +31,15 @@ function postNewWeek() {
   localStorage.setItem('currentWeek', weekData);
 }
 
+export const postNewMonth = () => {
+  const month = date.getMonth() + 1;
+  localStorage.setItem('currentMonth', month);
+};
+
 export function isNewDay() {
   const dayOfWeek = JSON.parse(localStorage.getItem('dayOfWeek'));
   const calDate = date.getDate();
   if (!dayOfWeek) {
-    postNewDay();
     return true;
   }
   return !(dayOfWeek.date == calDate);
@@ -43,17 +47,30 @@ export function isNewDay() {
 
 export function isNewWeek() {
   const currentWeek = JSON.parse(localStorage.getItem('currentWeek'));
-  const currentMonth = date.getMonth();
+  const currentMonth = date.getMonth() + 1;
   const currentDate = date.getDate();
+  const newMonth = () => {
+    return (
+      currentMonth >= currentWeek.endOfWeekMonth ||
+      (currentMonth == 1 && currentWeek.endOfWeekMonth == 12)
+    );
+  };
   if (!currentWeek) {
-    postNewWeek();
     return true;
   }
-  if (
-    currentDate > currentWeek.endOfWeekDate &&
-    currentMonth >= currentWeek.endOfWeekMonth
-  ) {
+
+  if (currentDate > currentWeek.endOfWeekDate && newMonth()) {
     return true;
   }
   return false;
+}
+
+export function isNewMonth() {
+  const savedMonth = JSON.parse(localStorage.getItem('currentMonth'));
+  const currentMonth = date.getMonth() + 1;
+  if (!savedMonth) {
+    return true;
+  }
+  const newMonth = savedMonth !== currentMonth;
+  return newMonth;
 }

@@ -3,16 +3,20 @@ import classnames from 'classnames';
 import Task from './Task';
 
 import { getNewId } from '../helpers/globalId';
+import { updateTask } from '../helpers/tasksData';
+import {
+  isNewDay,
+  isNewWeek,
+  isNewMonth,
+  postNewWeek,
+  postNewDay,
+  postNewMonth
+} from '../helpers/time';
 
 import styles from './TimeFrameGroup.css';
 
 class TimeFrameGroup extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onTaskSubmit = this.onTaskSubmit.bind(this);
-  }
-
-  onTaskSubmit(e) {
+  onTaskSubmit = e => {
     e.preventDefault();
     const { value } = e.target.task;
     const newTask = {
@@ -25,10 +29,21 @@ class TimeFrameGroup extends React.Component {
     };
     this.props.addTask(newTask);
     e.target.task.value = null;
-  }
+  };
+
+  checkRecurrence = (task, chkFn) => {
+    const reset = chkFn();
+    const alteredTask = task;
+    if (reset && alteredTask.recurring) {
+      alteredTask.occurrencesRemaining = alteredTask.occurrences;
+      alteredTask.complete = false;
+      updateTask(alteredTask);
+    }
+    return alteredTask;
+  };
 
   render() {
-    const { newTaskFormHidden } = this.props;
+    const { group, newTaskFormHidden, tasks } = this.props;
     const formClasses = classnames({
       [styles.hidden]: newTaskFormHidden
     });
@@ -38,18 +53,30 @@ class TimeFrameGroup extends React.Component {
     });
     return (
       <article>
-        <h2 className={styles.title}>{`${this.props.group} Tasks`}</h2>
+        <h2 className={styles.title}>{`${group} Tasks`}</h2>
         <ul>
-          {this.props.tasks.map(task => {
-            // is new day
-            // is new week
-            // is new month
-            // if so, reset recurring tasks
+          {tasks.map((task, index) => {
+            let chkFn;
+            let resetTime;
+            if (group === 'daily') {
+              chkFn = isNewDay;
+              resetTime = postNewDay;
+            } else if (group === 'weekly') {
+              chkFn = isNewWeek;
+              resetTime = postNewWeek;
+            } else {
+              chkFn = isNewMonth;
+              resetTime = postNewMonth;
+            }
+            const taskReset = this.checkRecurrence(task, chkFn);
+            if (index == tasks.length - 1 && chkFn()) {
+              resetTime();
+            }
             return (
               <Task
                 checkboxOnClick={this.props.checkboxOnClick}
-                key={`${task.title}`}
-                task={task}
+                key={`${taskReset.title}`}
+                task={taskReset}
                 decrementOnClick={this.props.decrementOnClick}
                 incrementOnClick={this.props.incrementOnClick}
                 toggleOnClick={this.props.toggleOnClick}

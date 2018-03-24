@@ -32,10 +32,7 @@ class TaskSection extends React.Component {
     this.getUpdatedTasks();
   }
 
-  onAddButtonClick = e => {
-    const {
-      group = e.target.parentNode.parentNode.dataset.group
-    } = e.target.parentNode.dataset;
+  onAddButtonClick = group => () => {
     this.setState({ groupWithActiveButton: group }, () => {
       this.inputField[group].focus();
     });
@@ -49,7 +46,6 @@ class TaskSection extends React.Component {
   toggleOnClick = e => {
     const recurring = e.target.checked;
     const { id } = e.target.dataset;
-
     updateTask({ id, recurring });
   };
 
@@ -84,14 +80,14 @@ class TaskSection extends React.Component {
     const children = React.Children.map(this.props.children, child => {
       const { group } = child.props;
       return React.cloneElement(child, {
-        tasks: this.selectTasksByTimeFrame(group),
         addTask: this.addTask,
-        onAddButtonClick: this.onAddButtonClick,
-        newTaskFormHidden: this.state.groupWithActiveButton !== group,
-        inputRef: el => (this.inputField[group] = el),
         checkboxOnClick: TaskSection.checkboxOnClick,
         decrementOnClick: this.decrementOnClick,
         incrementOnClick: this.incrementOnClick,
+        inputRef: el => (this.inputField[group] = el),
+        newTaskFormHidden: this.state.groupWithActiveButton !== group,
+        onAddButtonClick: this.onAddButtonClick,
+        tasks: this.selectTasksByTimeFrame(group),
         toggleOnClick: this.toggleOnClick
       });
     });

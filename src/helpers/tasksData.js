@@ -37,6 +37,17 @@ export function updateTask(updatedTask) {
   localStorage.setItem('tasks', stringify(tasks));
   getAllTasks();
 }
+
+export function deleteTask(id) {
+  for (let i = 0; i < tasks.length; i += 1) {
+    if (id == tasks[i].id) {
+      tasks.splice(i, 1);
+    }
+  }
+  localStorage.setItem('tasks', stringify(tasks));
+  getAllTasks();
+}
+
 export function incrementOccurrences(taskId) {
   const task = getTask(taskId);
   task.occurrences += 1;

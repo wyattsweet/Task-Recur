@@ -3,6 +3,7 @@ import React from 'react';
 import {
   decrementOccurrences,
   decrementRemainingOccurrences,
+  deleteTask,
   getAllTasks,
   incrementOccurrences,
   incrementRemainingOccurrences,
@@ -64,6 +65,11 @@ class TaskSection extends React.Component {
     postTask(this.state.tasks, task);
   };
 
+  onDeleteClick = e => {
+    deleteTask(e.target.dataset.id);
+    this.getUpdatedTasks();
+  };
+
   incrementOnClick = e => {
     const { id } = e.target.dataset;
     incrementOccurrences(id);
@@ -87,6 +93,7 @@ class TaskSection extends React.Component {
         inputRef: el => (this.inputField[group] = el),
         newTaskFormHidden: this.state.groupWithActiveButton !== group,
         onAddButtonClick: this.onAddButtonClick,
+        onDeleteClick: this.onDeleteClick,
         tasks: this.selectTasksByTimeFrame(group),
         toggleOnClick: this.toggleOnClick
       });

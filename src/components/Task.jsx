@@ -1,11 +1,13 @@
 import React from 'react';
 
+import DeleteButton from './DeleteButton';
 import Occurrences from './Occurrences';
 import Toggle from './Toggle';
 
 const Task = ({
   checkboxOnClick,
   decrementOnClick,
+  onDeleteClick,
   incrementOnClick,
   task,
   toggleOnClick
@@ -20,19 +22,18 @@ const Task = ({
   } = task;
   return (
     <li>
-      <label htmlFor="occurrenceBlock">
-        {title}
-        <Occurrences
-          checkboxOnClick={checkboxOnClick}
-          decrementOnClick={decrementOnClick}
-          id={id}
-          incrementOnClick={incrementOnClick}
-          occurrences={occurrences}
-          occurrencesRemaining={occurrencesRemaining}
-          timeFrame={timeFrame}
-        />
-      </label>
+      {title}
+      <Occurrences
+        checkboxOnClick={checkboxOnClick}
+        decrementOnClick={decrementOnClick}
+        id={id}
+        incrementOnClick={incrementOnClick}
+        occurrences={occurrences}
+        occurrencesRemaining={occurrencesRemaining}
+        timeFrame={timeFrame}
+      />
       <Toggle taskId={id} onClick={toggleOnClick} recurring={recurring} />
+      <DeleteButton id={id} onClick={onDeleteClick} />
     </li>
   );
 };

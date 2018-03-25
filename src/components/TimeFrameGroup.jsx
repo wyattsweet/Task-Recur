@@ -23,6 +23,7 @@ const TimeFrameGroup = ({
   inputRef,
   newTaskFormHidden,
   onAddButtonClick,
+  onDeleteClick,
   tasks,
   toggleOnClick
 }) => {
@@ -64,6 +65,7 @@ const TimeFrameGroup = ({
               key={`${taskReset.title}`}
               task={taskReset}
               decrementOnClick={decrementOnClick}
+              onDeleteClick={onDeleteClick}
               incrementOnClick={incrementOnClick}
               toggleOnClick={toggleOnClick}
             />

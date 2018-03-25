@@ -1,0 +1,16 @@
+@import url('../styles/index.css');
+
+.button {
+  border: none;
+  color: var(--color-secondary-l);
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.button:hover {
+  color: var(--color-secondary-d);
+}
+
+.button:focus {
+  outline: none;
+}

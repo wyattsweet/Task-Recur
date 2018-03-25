@@ -25,6 +25,7 @@ li {
 }
 
 button {
+  background: white;
   border: none;
   cursor: pointer;
 }

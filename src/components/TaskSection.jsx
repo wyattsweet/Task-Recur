@@ -23,6 +23,7 @@ class TaskSection extends React.Component {
   }
 
   state = {
+    editTaskWithId: null,
     tasks: [],
     groupWithActiveButton: null
   };
@@ -56,6 +57,24 @@ class TaskSection extends React.Component {
     });
   };
 
+  setTaskToEdit = e => {
+    this.setState({ editTaskWithId: e.target.dataset.id });
+  };
+
+  editTaskSubmit = e => {
+    e.preventDefault();
+    updateTask({
+      id: e.target.newTitle.dataset.id,
+      title: e.target.newTitle.value
+    });
+    this.setState({ editTaskWithId: null });
+    this.getUpdatedTasks();
+  };
+
+  cancelSetTaskToEdit = () => {
+    this.setState({ editTaskWithId: null });
+  };
+
   addTask = task => {
     const { tasks: allTasks } = this.state;
     this.setState({
@@ -87,13 +106,17 @@ class TaskSection extends React.Component {
       const { group } = child.props;
       return React.cloneElement(child, {
         addTask: this.addTask,
+        cancelSetTaskToEdit: this.cancelSetTaskToEdit,
         checkboxOnClick: TaskSection.checkboxOnClick,
         decrementOnClick: this.decrementOnClick,
+        editTaskSubmit: this.editTaskSubmit,
+        editTaskWithId: this.state.editTaskWithId,
         incrementOnClick: this.incrementOnClick,
         inputRef: el => (this.inputField[group] = el),
         newTaskFormHidden: this.state.groupWithActiveButton !== group,
         onAddButtonClick: this.onAddButtonClick,
         onDeleteClick: this.onDeleteClick,
+        setTaskToEdit: this.setTaskToEdit,
         tasks: this.selectTasksByTimeFrame(group),
         toggleOnClick: this.toggleOnClick
       });

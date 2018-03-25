@@ -1,6 +1,7 @@
 import React from 'react';
 
 import AddButton from './AddButton';
+import EditTask from './EditTask';
 import Task from './Task';
 import { updateTask } from '../helpers/tasksData';
 import {
@@ -16,14 +17,18 @@ import styles from './TimeFrameGroup.css';
 
 const TimeFrameGroup = ({
   addTask,
+  cancelSetTaskToEdit,
   checkboxOnClick,
   decrementOnClick,
+  editTaskWithId,
+  editTaskSubmit,
   group,
   incrementOnClick,
   inputRef,
   newTaskFormHidden,
   onAddButtonClick,
   onDeleteClick,
+  setTaskToEdit,
   tasks,
   toggleOnClick
 }) => {
@@ -59,13 +64,22 @@ const TimeFrameGroup = ({
           if (index == tasks.length - 1 && chkFn()) {
             resetTime();
           }
-          return (
+          return editTaskWithId == task.id ? (
+            <EditTask
+              cancelOnClick={cancelSetTaskToEdit}
+              editTaskSubmit={editTaskSubmit}
+              id={task.id}
+              key={taskReset.title}
+              value={taskReset.title}
+            />
+          ) : (
             <Task
               checkboxOnClick={checkboxOnClick}
               key={`${taskReset.title}`}
               task={taskReset}
               decrementOnClick={decrementOnClick}
               onDeleteClick={onDeleteClick}
+              setTaskToEdit={setTaskToEdit}
               incrementOnClick={incrementOnClick}
               toggleOnClick={toggleOnClick}
             />

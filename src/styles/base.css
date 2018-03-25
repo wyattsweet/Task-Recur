@@ -23,3 +23,12 @@ ul {
 li {
   list-style: none;
 }
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}

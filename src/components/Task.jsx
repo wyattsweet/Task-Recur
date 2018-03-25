@@ -1,14 +1,16 @@
 import React from 'react';
 
 import DeleteButton from './DeleteButton';
+import EditButton from './EditButton';
 import Occurrences from './Occurrences';
 import Toggle from './Toggle';
 
 const Task = ({
   checkboxOnClick,
   decrementOnClick,
-  onDeleteClick,
   incrementOnClick,
+  onDeleteClick,
+  setTaskToEdit,
   task,
   toggleOnClick
 }) => {
@@ -33,6 +35,7 @@ const Task = ({
         timeFrame={timeFrame}
       />
       <Toggle taskId={id} onClick={toggleOnClick} recurring={recurring} />
+      <EditButton setTaskToEdit={setTaskToEdit} id={id} />
       <DeleteButton id={id} onClick={onDeleteClick} />
     </li>
   );

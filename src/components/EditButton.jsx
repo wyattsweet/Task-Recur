@@ -1,12 +1,24 @@
 import React from 'react';
 
+import { MyContext } from './Provider';
+
 import styles from './EditButton.css';
 
-const EditButton = ({ id, setTaskToEdit }) => {
+const EditButton = ({ id }) => {
   return (
-    <button onClick={setTaskToEdit} data-id={id} className={styles.button}>
-      ✎
-    </button>
+    <MyContext.Consumer>
+      {context => {
+        const { setTaskToEdit } = context;
+        return (
+          <button
+            onClick={setTaskToEdit}
+            data-id={id}
+            className={styles.button}>
+            ✎
+          </button>
+        );
+      }}
+    </MyContext.Consumer>
   );
 };
 

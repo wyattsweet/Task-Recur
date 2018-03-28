@@ -1,7 +1,7 @@
 @import url('../styles/index.css');
 
 .header {
-  background: var(--color-primary-d);
+  border-bottom: 2px solid var(--color-grey-l);
 }
 
 .mainText {

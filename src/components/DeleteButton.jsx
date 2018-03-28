@@ -1,12 +1,24 @@
 import React from 'react';
 
+import { MyContext } from './Provider';
+
 import styles from './DeleteButton.css';
 
-const DeleteButton = ({ id, onClick }) => {
+const DeleteButton = ({ id }) => {
   return (
-    <button onClick={onClick} data-id={id} className={styles.button}>
-      𝘅
-    </button>
+    <MyContext.Consumer>
+      {context => {
+        const { onDeleteClick } = context;
+        return (
+          <button
+            onClick={onDeleteClick}
+            data-id={id}
+            className={styles.button}>
+            𝘅
+          </button>
+        );
+      }}
+    </MyContext.Consumer>
   );
 };
 export default DeleteButton;

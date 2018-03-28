@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { MyContext } from './Provider';
+
 import styles from './Occurrences.css';
 
 const createCheckboxes = (
@@ -32,31 +34,36 @@ const createCheckboxes = (
   return allBoxes;
 };
 
-const Occurrences = ({
-  checkboxOnClick,
-  decrementOnClick,
-  id,
-  incrementOnClick,
-  occurrences,
-  occurrencesRemaining,
-  timeFrame
-}) => {
+const Occurrences = ({ id, occurrences, occurrencesRemaining, timeFrame }) => {
   return (
-    <div className={styles.occurrences}>
-      <button className={styles.button} data-id={id} onClick={decrementOnClick}>
-        -
-      </button>
-      {createCheckboxes(
-        id,
-        occurrences,
-        occurrencesRemaining,
-        checkboxOnClick,
-        timeFrame
-      )}
-      <button className={styles.button} data-id={id} onClick={incrementOnClick}>
-        +
-      </button>
-    </div>
+    <MyContext.Consumer>
+      {context => {
+        const { checkboxOnClick, decrementOnClick, incrementOnClick } = context;
+        return (
+          <div className={styles.occurrences}>
+            <button
+              className={styles.button}
+              data-id={id}
+              onClick={decrementOnClick}>
+              -
+            </button>
+            {createCheckboxes(
+              id,
+              occurrences,
+              occurrencesRemaining,
+              checkboxOnClick,
+              timeFrame
+            )}
+            <button
+              className={styles.button}
+              data-id={id}
+              onClick={incrementOnClick}>
+              +
+            </button>
+          </div>
+        );
+      }}
+    </MyContext.Consumer>
   );
 };
 

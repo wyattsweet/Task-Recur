@@ -102,7 +102,7 @@ class Provider extends React.Component {
       <MyContext.Provider
         value={{
           cancelOnClick: this.cancelOnClick,
-          checkboxOnClick: MyContext.checkboxOnClick,
+          checkboxOnClick: Provider.checkboxOnClick,
           onDeleteClick: this.onDeleteClick,
           editTaskSubmit: this.editTaskSubmit,
           setTaskToEdit: this.setTaskToEdit,

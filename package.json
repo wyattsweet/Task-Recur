@@ -1,7 +1,13 @@
 {
+  "name": "task_recur",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "build": "build-react",
-    "dev": "webpack-dev-server --hot"
+    "dev": "webpack-dev-server --hot",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -9,10 +15,6 @@
     "react-dom": "^16.3.0-rc.0",
     "react-router-dom": "^4.2.2"
   },
-  "name": "task_recur",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
   "devDependencies": {
     "@wyattsweet/project-builder": "^1.0.1",
     "babel-core": "^6.26.0",
@@ -26,6 +28,7 @@
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.3",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -44,6 +47,13 @@
     "webpack": "^4.3.0",
     "webpack-cli": "^2.0.13",
     "webpack-dev-server": "^3.1.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/testSetup.js"
   },
   "repository": "git@github.com:wyattsweet/task_recur.git"
 }

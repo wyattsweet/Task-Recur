@@ -27,8 +27,7 @@ const checkRecurrence = (task, chkFn) => {
   return alteredTask;
 };
 
-const TimeFrameGroup = () => {
-  const { group, inputRef, tasks } = this.props;
+const TimeFrameGroup = ({ group, inputRef, tasks }) => {
   return (
     <MyContext.Consumer>
       {context => {

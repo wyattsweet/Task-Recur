@@ -48,11 +48,17 @@ export function deleteTask(id) {
   getAllTasks();
 }
 
+const checkTaskCompletion = task => {
+  const updatedTask = task;
+  updatedTask.complete = updatedTask.occurrencesRemaining == 0;
+  return updatedTask;
+};
+
 export function incrementOccurrences(taskId) {
   const task = getTask(taskId);
   task.occurrences += 1;
   task.occurrencesRemaining += 1;
-  updateTask(task);
+  updateTask(checkTaskCompletion(task));
 }
 
 export function decrementOccurrences(taskId) {
@@ -61,18 +67,20 @@ export function decrementOccurrences(taskId) {
     task.occurrences = task.occurrences - 1 < 1 ? 1 : (task.occurrences -= 1);
     task.occurrencesRemaining =
       task.occurrencesRemaining - 1 < 0 ? 0 : (task.occurrencesRemaining -= 1);
-    updateTask(task);
+    updateTask(checkTaskCompletion(task));
   }
 }
 
 export function incrementRemainingOccurrences(taskId) {
   const task = getTask(taskId);
   task.occurrencesRemaining += 1;
-  updateTask(task);
+  task.complete = task.occurrencesRemaining == 0;
+  updateTask(checkTaskCompletion(task));
 }
 
 export function decrementRemainingOccurrences(taskId) {
   const task = getTask(taskId);
   task.occurrencesRemaining -= 1;
-  updateTask(task);
+  task.complete = task.occurrencesRemaining == 0;
+  updateTask(checkTaskCompletion(task));
 }

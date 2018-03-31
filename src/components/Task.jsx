@@ -1,3 +1,4 @@
+import classNames from 'classnames/bind';
 import React from 'react';
 
 import DeleteButton from './DeleteButton';
@@ -5,8 +6,13 @@ import EditButton from './EditButton';
 import Occurrences from './Occurrences';
 import Toggle from './Toggle';
 
+import styles from './Task.css';
+
+const cx = classNames.bind(styles);
+
 const Task = ({ task }) => {
   const {
+    complete,
     id,
     occurrences,
     occurrencesRemaining,
@@ -14,8 +20,13 @@ const Task = ({ task }) => {
     title,
     timeFrame
   } = task;
+
+  const taskClass = cx({
+    complete
+  });
+
   return (
-    <li>
+    <li className={taskClass}>
       {title}
       <Occurrences
         id={id}

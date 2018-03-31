@@ -16,14 +16,6 @@ import {
 export const MyContext = React.createContext();
 
 class Provider extends React.Component {
-  static checkboxOnClick(e) {
-    const { checked } = e.target;
-    const { id } = e.target.dataset;
-    return checked
-      ? decrementRemainingOccurrences(id)
-      : incrementRemainingOccurrences(id);
-  }
-
   inputField = {};
 
   state = {
@@ -35,6 +27,15 @@ class Provider extends React.Component {
   componentDidMount() {
     this.getUpdatedTasks();
   }
+
+  checkboxOnClick = e => {
+    const { checked } = e.target;
+    const { id } = e.target.dataset;
+    checked
+      ? decrementRemainingOccurrences(id)
+      : incrementRemainingOccurrences(id);
+    this.getUpdatedTasks();
+  };
 
   incrementOnClick = e => {
     const { id } = e.target.dataset;
@@ -102,7 +103,7 @@ class Provider extends React.Component {
       <MyContext.Provider
         value={{
           cancelOnClick: this.cancelOnClick,
-          checkboxOnClick: Provider.checkboxOnClick,
+          checkboxOnClick: this.checkboxOnClick,
           onDeleteClick: this.onDeleteClick,
           editTaskSubmit: this.editTaskSubmit,
           setTaskToEdit: this.setTaskToEdit,

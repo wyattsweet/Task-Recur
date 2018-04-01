@@ -33,7 +33,7 @@ const TimeFrameGroup = ({ group, inputRef, tasks }) => {
       {context => {
         const { editTaskWithId } = context;
         return (
-          <article>
+          <article className={styles.taskGroup}>
             <h2 className={styles.title}>{`${group} Tasks`}</h2>
             <ul>
               {tasks.map((task, index) => {
@@ -53,14 +53,18 @@ const TimeFrameGroup = ({ group, inputRef, tasks }) => {
                 if (index == tasks.length - 1 && chkFn()) {
                   resetTime();
                 }
-                return editTaskWithId == task.id ? (
-                  <EditTask
-                    id={task.id}
-                    key={taskReset.title}
-                    value={taskReset.title}
-                  />
-                ) : (
-                  <Task key={`${taskReset.title}`} task={taskReset} />
+                return (
+                  <li key={`${taskReset.title}`} className={styles.task}>
+                    {editTaskWithId == task.id ? (
+                      <EditTask
+                        id={task.id}
+                        key={taskReset.title}
+                        value={taskReset.title}
+                      />
+                    ) : (
+                      <Task task={taskReset} />
+                    )}
+                  </li>
                 );
               })}
               <AddButton group={group} inputRef={inputRef} />

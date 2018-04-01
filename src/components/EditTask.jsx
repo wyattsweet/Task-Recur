@@ -1,6 +1,8 @@
 import React from 'react';
 import { MyContext } from './Provider';
 
+import styles from './EditTask.css';
+
 class EditTask extends React.Component {
   render() {
     const { id, value } = this.props;
@@ -9,8 +11,9 @@ class EditTask extends React.Component {
         {context => {
           const { cancelOnClick, editTaskSubmit } = context;
           return (
-            <React.Fragment>
+            <div>
               <input
+                className={styles.editInput}
                 ref={el => (this.input = el)}
                 type="text"
                 data-id={id}
@@ -18,12 +21,15 @@ class EditTask extends React.Component {
                 defaultValue={value}
               />
               <button
+                className={styles.submit}
                 onClick={() => editTaskSubmit(this.input.value, id)}
                 type="submit">
                 Update
               </button>
-              <button onClick={cancelOnClick}>Cancel</button>
-            </React.Fragment>
+              <button className={styles.cancel} onClick={cancelOnClick}>
+                Cancel
+              </button>
+            </div>
           );
         }}
       </MyContext.Consumer>

@@ -66,7 +66,7 @@ export function decrementOccurrences(taskId) {
   if (task.occurrencesRemaining > 0) {
     task.occurrences = task.occurrences - 1 < 1 ? 1 : (task.occurrences -= 1);
     task.occurrencesRemaining =
-      task.occurrencesRemaining - 1 < 0 ? 0 : (task.occurrencesRemaining -= 1);
+      task.occurrencesRemaining - 1 < 1 ? 1 : (task.occurrencesRemaining -= 1);
     updateTask(checkTaskCompletion(task));
   }
 }

@@ -1,5 +1,14 @@
 @import url('../styles/index.css');
 
+.taskGroup {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.task {
+  line-height: 60px;
+}
+
 .title {
   margin: 1em 0 0;
 }

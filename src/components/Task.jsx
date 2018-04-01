@@ -22,22 +22,25 @@ const Task = ({ task }) => {
   } = task;
 
   const taskClass = cx({
-    complete
+    complete,
+    task: true
   });
 
   return (
-    <li className={taskClass}>
-      {title}
+    <div className={taskClass}>
+      <span>{title}</span>
       <Occurrences
         id={id}
         occurrences={occurrences}
         occurrencesRemaining={occurrencesRemaining}
         timeFrame={timeFrame}
       />
-      <Toggle taskId={id} recurring={recurring} />
-      <EditButton id={id} />
-      <DeleteButton id={id} />
-    </li>
+      <div className={styles.taskControls}>
+        <Toggle taskId={id} recurring={recurring} />
+        <EditButton id={id} />
+        <DeleteButton id={id} />
+      </div>
+    </div>
   );
 };
 

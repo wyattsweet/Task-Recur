@@ -1,0 +1,11 @@
+.editInput {
+  height: 13px;
+  width: 135px;
+}
+
+.submit,
+.cancel {
+  border: 1px solid black;
+  margin: 0 0 0 10px;
+  padding: 4px 18px;
+}

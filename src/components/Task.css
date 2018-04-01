@@ -1,5 +1,18 @@
 @import url('../styles/index.css');
 
+.task {
+  display: flex;
+  justify-content: center;
+}
+
 .complete {
   color: var(--color-grey-l);
+}
+
+.taskControls {
+  display: inline-block;
+}
+
+.taskControls > * {
+  margin: 0 4px;
 }

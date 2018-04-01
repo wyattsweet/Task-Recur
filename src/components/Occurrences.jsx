@@ -20,6 +20,7 @@ const createCheckboxes = (
     unchecked -= 1;
     const input = (
       <input
+        className={styles.checkbox}
         data-timeframe={timeFrame}
         data-id={id}
         defaultChecked={checked}

@@ -14,9 +14,9 @@ export function postNewWeek() {
     0
   ).getDate();
   const calDate = date.getDate();
-  const startOfWeekMonth = date.getMonth();
+  const startOfWeekMonth = date.getMonth() + 1;
   const startOfWeekDate = calDate - day;
-  let endOfWeekMonth = date.getMonth();
+  let endOfWeekMonth = date.getMonth() + 1;
   let endOfWeekDate = startOfWeekDate + 6;
   if (endOfWeekDate > lastDayOfMonth) {
     endOfWeekMonth += 1;
@@ -45,21 +45,22 @@ export function isNewDay() {
   return !(dayOfWeek.date == calDate);
 }
 
-export function isNewWeek() {
+export function isNewWeek(newDate = date) {
   const currentWeek = JSON.parse(localStorage.getItem('currentWeek'));
-  const currentMonth = date.getMonth() + 1;
-  const currentDate = date.getDate();
+  const currentMonth = newDate.getMonth() + 1;
+  const currentDate = newDate.getDate();
   const newMonth = () => {
-    return (
-      currentMonth >= currentWeek.endOfWeekMonth ||
-      (currentMonth == 1 && currentWeek.endOfWeekMonth == 12)
-    );
+    return currentMonth !== currentWeek.endOfWeekMonth;
+    //    return (
+    //      currentMonth >= currentWeek.endOfWeekMonth ||
+    //      (currentMonth == 1 && currentWeek.endOfWeekMonth == 12)
+    //    );
   };
   if (!currentWeek) {
     return true;
   }
 
-  if (currentDate > currentWeek.endOfWeekDate && newMonth()) {
+  if (currentDate > currentWeek.endOfWeekDay || newMonth()) {
     return true;
   }
   return false;

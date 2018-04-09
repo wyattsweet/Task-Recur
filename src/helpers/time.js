@@ -60,7 +60,7 @@ export function isNewWeek(newDate = date) {
     return true;
   }
 
-  if (currentDate > currentWeek.endOfWeekDay || newMonth()) {
+  if (currentDate > currentWeek.endOfWeekDate || newMonth()) {
     return true;
   }
   return false;

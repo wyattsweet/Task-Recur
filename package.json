@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "build-react",
+    "setup": "build-react",
     "start": "webpack-dev-server --hot --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -52,8 +53,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "identity-obj-proxy"
     },
     "setupTestFrameworkScriptFile": "<rootDir>/testSetup.js"

@@ -87,8 +87,8 @@
   resolved "http://registry.npmjs.org/@types/node/-/node-9.4.7.tgz#57d81cd98719df2c9de118f2d5f3b1120dcd7275"
 
 "@wyattsweet/project-builder@^1.0.1":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@wyattsweet/project-builder/-/project-builder-1.2.0.tgz#ca72a7ab8be5c3a89e43f4efe96d218a82a887c4"
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@wyattsweet/project-builder/-/project-builder-1.3.1.tgz#14a6408edf4f91bae5f271c39576df55069f2e03"
   dependencies:
     shelljs "^0.8.1"
 

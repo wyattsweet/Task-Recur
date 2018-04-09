@@ -1,10 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import '../styles/base.css';
+import App from './App';
 
-const App = () => {
-  return <h1>HI!!!</h1>;
-};
+import '../styles/base.css';
 
 render(<App />, document.getElementById('root'));

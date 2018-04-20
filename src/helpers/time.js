@@ -50,11 +50,10 @@ export function isNewWeek(newDate = date) {
   const currentMonth = newDate.getMonth() + 1;
   const currentDate = newDate.getDate();
   const newMonth = () => {
-    return currentMonth !== currentWeek.endOfWeekMonth;
-    //    return (
-    //      currentMonth >= currentWeek.endOfWeekMonth ||
-    //      (currentMonth == 1 && currentWeek.endOfWeekMonth == 12)
-    //    );
+    return (
+      currentMonth >= currentWeek.endOfWeekMonth ||
+      (currentMonth == 1 && currentWeek.endOfWeekMonth == 12)
+    );
   };
   if (!currentWeek) {
     return true;
@@ -72,6 +71,5 @@ export function isNewMonth() {
   if (!savedMonth) {
     return true;
   }
-  const newMonth = savedMonth !== currentMonth;
-  return newMonth;
+  return savedMonth !== currentMonth;
 }

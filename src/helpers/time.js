@@ -49,7 +49,7 @@ export function isNewWeek(newDate = date) {
   const currentWeek = JSON.parse(localStorage.getItem('currentWeek'));
   const currentMonth = newDate.getMonth() + 1;
   const currentDate = newDate.getDate();
-  const newMonth = () => {
+  const newYear = () => {
     return (
       currentMonth >= currentWeek.endOfWeekMonth ||
       (currentMonth == 1 && currentWeek.endOfWeekMonth == 12)
@@ -59,7 +59,11 @@ export function isNewWeek(newDate = date) {
     return true;
   }
 
-  if (currentDate > currentWeek.endOfWeekDate || newMonth()) {
+  if (
+    (currentMonth >= currentWeek.endOfWeekMonth &&
+      currentDate > currentWeek.endOfWeekDate) ||
+    newYear()
+  ) {
     return true;
   }
   return false;

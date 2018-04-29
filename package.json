@@ -6,14 +6,17 @@
   "scripts": {
     "setup": "build-react",
     "start": "webpack-dev-server --hot --open --config webpack.dev.js",
+    "start:prod": "npm run build && npm run server:start",
     "build": "webpack --config webpack.prod.js",
-    "server": "node server/index.js",
+    "server:start": "forever start -w server",
+    "server:stop": "forever stop server",
     "test": "jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {
     "classnames": "^2.2.5",
     "express": "^4.16.3",
+    "forever": "^0.15.3",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-router-dom": "^4.2.2"

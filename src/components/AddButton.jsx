@@ -47,7 +47,10 @@ const AddButton = ({ inputRef, group }) => {
                 />
               </form>
             </section>
-            <button onClick={onAddButtonClick(group)} className={newTaskStyles}>
+            <button
+              type="button"
+              onClick={onAddButtonClick(group)}
+              className={newTaskStyles}>
               <div className={styles.addButton}>
                 <span className={styles.x}>+</span>
               </div>

@@ -13,7 +13,8 @@ const DeleteButton = ({ id }) => {
           <button
             onClick={onDeleteClick}
             data-id={id}
-            className={styles.button}>
+            className={styles.button}
+            type="button">
             𝘅
           </button>
         );

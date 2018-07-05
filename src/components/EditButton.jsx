@@ -13,6 +13,7 @@ const EditButton = ({ id }) => {
           <button
             onClick={setTaskToEdit}
             data-id={id}
+            type="button"
             className={styles.button}>
             ✎
           </button>

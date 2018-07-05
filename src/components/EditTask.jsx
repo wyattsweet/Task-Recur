@@ -26,7 +26,10 @@ class EditTask extends React.Component {
                 type="submit">
                 Update
               </button>
-              <button className={styles.cancel} onClick={cancelOnClick}>
+              <button
+                type="button"
+                className={styles.cancel}
+                onClick={cancelOnClick}>
                 Cancel
               </button>
             </div>

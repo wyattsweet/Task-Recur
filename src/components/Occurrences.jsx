@@ -45,6 +45,7 @@ const Occurrences = ({ id, occurrences, occurrencesRemaining, timeFrame }) => {
             <button
               className={styles.button}
               data-id={id}
+              type="button"
               onClick={decrementOnClick}>
               -
             </button>
@@ -58,6 +59,7 @@ const Occurrences = ({ id, occurrences, occurrencesRemaining, timeFrame }) => {
             <button
               className={styles.button}
               data-id={id}
+              type="button"
               onClick={incrementOnClick}>
               +
             </button>

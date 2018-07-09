@@ -10,13 +10,27 @@ import styles from './Authentication.css';
 
 class Login extends React.Component {
   state = {
-    email: null,
-    password: null,
+    email: '',
+    password: '',
     value: 0
   };
 
   onLoginSubmit = () => {
-    console.log('login click');
+    const { email, password } = this.state;
+    const headers = {
+      'content-type': 'application/json; charset=utf-8'
+    };
+    const data = { email, password };
+    this.setState({ email: '', password: '' });
+    fetch('http://localhost:3000/api/v1/login', {
+      headers,
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+      });
   };
 
   onEmailChange = e => {
@@ -44,6 +58,8 @@ class Login extends React.Component {
             onEmailChange={this.onEmailChange}
             onLoginSubmit={this.onLoginSubmit}
             onPasswordChange={this.onPasswordChange}
+            email={this.state.email}
+            password={this.state.password}
           />
         ) : (
           <SignUpForm />

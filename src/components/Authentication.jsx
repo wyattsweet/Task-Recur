@@ -8,7 +8,7 @@ import SignUpForm from './SignUpForm';
 
 import styles from './Authentication.css';
 
-class Authentication extends React.Component {
+class Login extends React.Component {
   state = {
     email: null,
     password: null,
@@ -16,7 +16,7 @@ class Authentication extends React.Component {
   };
 
   onLoginSubmit = () => {
-    console.log('login submitted');
+    console.log('login click');
   };
 
   onEmailChange = e => {
@@ -53,4 +53,4 @@ class Authentication extends React.Component {
   }
 }
 
-export default Authentication;
+export default Login;

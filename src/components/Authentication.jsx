@@ -10,12 +10,12 @@ import styles from './Authentication.css'
 
 class Authentication extends React.Component {
   state = {
-    email: null,
-    password: null,
+    email: '',
+    password: '',
     value: 0,
   }
 
-  onLoginSubmit = () => {
+  fetchToken = () => {
     const { email, password } = this.state
     const headers = {
       'content-type': 'application/json; charset=utf-8',
@@ -49,8 +49,14 @@ class Authentication extends React.Component {
     this.setState({ value })
   }
 
+  onSubmit = e => {
+    e.preventDefault()
+    this.fetchToken()
+    this.setState({ email: '', password: '' })
+  }
+
   render() {
-    const { value } = this.state
+    const { email, password, value } = this.state
     return (
       <div className={styles.root}>
         <Tabs value={value} onChange={this.onTabChange}>
@@ -59,9 +65,11 @@ class Authentication extends React.Component {
         </Tabs>
         {value === 0 ? (
           <LoginForm
+            email={email}
+            password={password}
             onEmailChange={this.onEmailChange}
-            onLoginSubmit={this.onLoginSubmit}
             onPasswordChange={this.onPasswordChange}
+            onSubmit={this.onSubmit}
           />
         ) : (
           <SignUpForm />

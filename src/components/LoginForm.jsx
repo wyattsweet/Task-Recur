@@ -1,16 +1,17 @@
-import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
-import React from 'react';
+import Button from '@material-ui/core/Button'
+import Input from '@material-ui/core/Input'
+import React from 'react'
 
 const LoginForm = ({
   email,
   password,
   onEmailChange,
   onLoginSubmit,
-  onPasswordChange
+  onPasswordChange,
+  onSubmit,
 }) => {
   return (
-    <React.Fragment>
+    <form onSubmit={onSubmit}>
       <div className="emailContainer">
         <Input
           type="email"
@@ -27,11 +28,11 @@ const LoginForm = ({
           value={password}
         />
       </div>
-      <Button onClick={onLoginSubmit} variant="contained">
+      <Button type="submit" onClick={onLoginSubmit} variant="contained">
         Sign In
       </Button>
-    </React.Fragment>
-  );
-};
+    </form>
+  )
+}
 
-export default LoginForm;
+export default LoginForm

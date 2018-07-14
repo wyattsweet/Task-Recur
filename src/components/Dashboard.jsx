@@ -5,7 +5,8 @@ import Provider from './Provider';
 import TaskSection from './TaskSection';
 import TimeFrameGroup from './TimeFrameGroup';
 
-const App = () => {
+const Dashboard = () => {
+  console.log('in the dashboard')
   return (
     <Provider>
       <Header />
@@ -18,4 +19,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Dashboard;

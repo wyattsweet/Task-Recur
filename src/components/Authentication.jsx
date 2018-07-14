@@ -29,7 +29,7 @@ class Login extends React.Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
+        localStorage.setItem('token', res.jwt)
       });
   };
 

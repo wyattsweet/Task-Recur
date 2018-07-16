@@ -14,11 +14,13 @@ class User extends React.Component {
     }
   }
 
-  componentDidMount = () => {}
+  componentDidMount = () => {
+    this.fetchUserData()
+  }
 
   fetchUserData = () => {
     const token = localStorageHelper.fetchToken()
-    const headers = {}
+    const headers = { AUTHORIZATION: `Bobcats${token}` }
     return !token
       ? this.setState({ validUser: false })
       : fetch('http://localhost:3000/api/v1/user', {
@@ -27,7 +29,11 @@ class User extends React.Component {
         })
           .then(res => res.json())
           .then(res => {
-            localStorageHelper.saveToken(res.jwt)
+            console.log(res)
+            this.setState({
+              loading: false,
+              validUser: true,
+            })
           })
           .catch(err => {
             // do something with the err here

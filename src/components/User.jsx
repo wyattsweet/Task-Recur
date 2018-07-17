@@ -19,6 +19,14 @@ class User extends React.Component {
     this.fetchUserData()
   }
 
+  removeUser = () => {
+    localStorageHelper.removeToken()
+    this.setState({
+      user: null,
+      validUser: false,
+    })
+  }
+
   fetchUserData = () => {
     const token = localStorageHelper.fetchToken()
     const headers = { AUTHORIZATION: `Bobcats${token}` }
@@ -37,6 +45,7 @@ class User extends React.Component {
           })
           .catch(err => {
             // do something with the err here
+            console.error(err)
             this.setState({
               validUser: false,
             })
@@ -45,11 +54,17 @@ class User extends React.Component {
   }
 
   render() {
+    const children = React.Children.map(this.props.children, child => {
+      return React.cloneElement(child, {
+        removeUser: this.removeUser,
+        user: this.state.user,
+      })
+    })
     // fetch user data, if valid render children otherwise redirect to login
     return this.state.validUser ? (
-      <Loader loading={this.state.loading}>{this.props.children}</Loader>
+      <Loader loading={this.state.loading}>{children}</Loader>
     ) : (
-      <Redirect to="/login" />
+      <Redirect to="/" />
     )
   }
 }

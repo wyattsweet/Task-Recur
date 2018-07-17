@@ -24,7 +24,7 @@ const Dashboard = () => {
       </Provider>
     </User>
   ) : (
-    <Redirect to="/login" />
+    <Redirect to="/" />
   )
 }
 

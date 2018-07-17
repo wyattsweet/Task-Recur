@@ -4,8 +4,12 @@ const localStorageHelper = {
   },
 
   saveToken(token) {
-    localStorage.setItem('token', token)    
-  }
+    localStorage.setItem('token', token)
+  },
+
+  removeToken() {
+    localStorage.removeItem('token')
+  },
 }
 
 export default localStorageHelper

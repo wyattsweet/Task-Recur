@@ -17,11 +17,10 @@ const App = () => {
           exact
           path="/"
           render={() =>
-            token ? <Redirect to="/dashboard" /> : <Redirect to="/login" />
+            token ? <Redirect to="/dashboard" /> : <Authentication />
           }
         />
         <Route path="/dashboard" component={Dashboard} /> :
-        <Route path="/login" component={Authentication} />
       </div>
     </BrowserRouter>
   )

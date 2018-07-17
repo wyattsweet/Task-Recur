@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 
@@ -12,6 +13,7 @@ class Authentication extends React.Component {
   state = {
     email: '',
     password: '',
+    token: null,
     value: 0,
   }
 
@@ -30,6 +32,7 @@ class Authentication extends React.Component {
       .then(res => res.json())
       .then(res => {
         localStorageHelper.saveToken(res.jwt)
+        this.setState({ token: res.jwt })
       })
       .catch(err => {
         // TODO: properly handle error here
@@ -57,7 +60,9 @@ class Authentication extends React.Component {
 
   render() {
     const { email, password, value } = this.state
-    return (
+    return this.state.token ? (
+      <Redirect to="/dashboard" />
+    ) : (
       <div className={styles.root}>
         <Tabs value={value} onChange={this.onTabChange}>
           <Tab label="Signing In" />

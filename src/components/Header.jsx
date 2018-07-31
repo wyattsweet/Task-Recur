@@ -1,5 +1,6 @@
 import React from 'react'
 
+import LogoNoText from './assets/LogoNoText'
 import { MyContext } from './Provider'
 
 import styles from './Header.css'
@@ -10,9 +11,7 @@ const Header = () => {
       {context => {
         return (
           <header className={styles.header}>
-            <h1 className={styles.mainText}>Task Recur</h1>
-            <span>Signed in as {context.user.email} </span>
-            <button onClick={context.removeUser}>Sign Out</button>
+            <LogoNoText />
           </header>
         )
       }}

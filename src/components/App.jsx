@@ -20,7 +20,7 @@ const App = () => {
             token ? <Redirect to="/dashboard" /> : <Authentication />
           }
         />
-        <Route path="/dashboard" component={Dashboard} /> :
+        <Route path="/dashboard" component={Dashboard} />
       </div>
     </BrowserRouter>
   )

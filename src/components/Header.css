@@ -1,7 +1,11 @@
 @import url('../styles/index.css');
 
 .header {
-  border-bottom: 2px solid var(--color-grey-l);
+  background: var(--color-gunmetal);
+  font-family: none;
+}
+
+.logo {
 }
 
 .mainText {

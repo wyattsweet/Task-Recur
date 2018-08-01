@@ -4,9 +4,9 @@ import { BrowserRouter, Redirect, Route } from 'react-router-dom'
 import localStorageHelper from '../helpers/localStorage'
 
 import Authentication from './Authentication'
-import Dashboard from './Dashboard'
+import Dashboard from './dashboard'
 
-// if there is no token, redirect to /login
+// TODO: if token is expired: delete and redirect to /login
 
 const App = () => {
   const token = localStorageHelper.fetchToken()

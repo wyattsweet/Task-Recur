@@ -1,7 +1,5 @@
 import React from 'react'
 
-import styles from './logoNoText.css'
-
 const LogoNoText = () => {
   return (
     <svg

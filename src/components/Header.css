@@ -1,11 +1,16 @@
 @import url('../styles/index.css');
 
 .header {
+  align-items: center;
   background: var(--color-gunmetal);
+  display: flex;
   font-family: none;
+  justify-content: center;
+  padding: 0 73px;
 }
 
-.logo {
+.mainLogo {
+  margin-right: auto;
 }
 
 .mainText {

@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700');
 @import url('../styles/index.css');
 
+div {
+  display: block;
+}
+
 body {
+  background: var(--color-grey-l);
   color: var(--color-black-p);
   font-family: 'Hind', sans-serif;
   font-size: 18px;

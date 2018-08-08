@@ -13,19 +13,24 @@ import User from '../User'
 
 import localStorageHelper from '../../helpers/localStorage'
 
+import styles from './dashboard.css'
+
 // if there is a token stored in localStorage, pass the token to the server and request all of the users tasks.
 // If 401 is returned – delete saved token and redirect to /login, component Authentication
 const Dashboard = () => {
   return localStorageHelper.fetchToken() ? (
     <User>
       <Provider>
-        <Header />
-        <Tabs>
-          <TabRow>
-            <Tab />
-            <Tab />
-          </TabRow>
-        </Tabs>
+        <div className={styles.root}>
+          <Header />
+          <Tabs>
+            <TabRow>
+              <Tab />
+              <Tab />
+            </TabRow>
+            <TabContent />
+          </Tabs>
+        </div>
       </Provider>
     </User>
   ) : (

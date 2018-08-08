@@ -1,4 +1,9 @@
 :root {
+  --color-grey-l: #f2f2f2;
+  --color-grey-d: #d8d8d8;
+  --color-white: #ffffff;
+
+  /* BELOW IS BEING PHASED OUT */
   --color-gunmetal: #293341;
   --color-pink-accent: #f26581;
 
@@ -13,10 +18,4 @@
   --color-black-l: #484848;
   --color-black-p: #212121;
   --color-black-d: #000000;
-
-  --color-grey-l: #8e8e8e;
-  --color-grey-p: #616161;
-  --color-grey-d: #373737;
-
-  --color-white-l: #ffffff;
 }

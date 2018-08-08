@@ -1,0 +1,16 @@
+@import url('../../../../styles/index.css');
+
+.tab {
+  background: var(--color-white);
+  border: 1px solid var(--color-grey-d);
+  border-style: solid none none solid;
+  display: inline-block;
+  line-height: 29px;
+  padding: 12px 27px;
+  text-transform: uppercase;
+}
+
+.tab:last-child {
+  border: 1px solid var(--color-grey-d);
+  border-bottom: none;
+}

@@ -27,6 +27,7 @@ const Dashboard = () => {
             <TabRow>
               <Tab />
               <Tab />
+              <Tab />
             </TabRow>
             <TabContent />
           </Tabs>

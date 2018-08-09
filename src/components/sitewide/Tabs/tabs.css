@@ -1,5 +1,6 @@
 .tabs {
   display: inline-block;
+  margin-top: 64px;
   min-width: 752px;
   text-align: left;
 }

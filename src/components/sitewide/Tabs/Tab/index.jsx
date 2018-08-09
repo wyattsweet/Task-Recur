@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './styles.css'
 
-const Tab = () => {
-  return <div className={styles.tab}>Tab Content</div>
+const Tab = ({ label }) => {
+  return <div className={styles.tab}>{label}</div>
 }
 
 export default Tab

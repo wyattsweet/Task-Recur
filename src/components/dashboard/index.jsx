@@ -25,9 +25,9 @@ const Dashboard = () => {
           <Header />
           <Tabs>
             <TabRow>
-              <Tab />
-              <Tab />
-              <Tab />
+              <Tab label="daily" />
+              <Tab label="weekly" />
+              <Tab label="monthly" />
             </TabRow>
             <TabContent />
           </Tabs>

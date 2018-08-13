@@ -1,1 +1,35 @@
-/Users/wyattsweet/code/task_recur/node_modules/@wyattsweet/project-builder/src/eslintrc
+{
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2016,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": [ "Link" ],
+        "specialLink": [ "to", "hrefLeft", "hrefRight" ],
+        "aspects": [ "noHref", "invalidHref", "preferButton" ]
+      }
+    ],
+    "import/no-extraneous-dependencies": "off",
+    "arrow-body-style": "off",
+    "no-return-assign": "off",
+    "react/require-default-props": "off",
+    "react/prop-types": "off",
+    "consistent-return": "off",
+    "eqeqeq": "off",
+    "import/prefer-default-export": "off",
+    "react/sort-comp": "off"
+  }
+}

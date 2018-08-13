@@ -1,1 +1,7 @@
-/Users/wyattsweet/code/task_recur/node_modules/@wyattsweet/project-builder/src/postcss.config.js
+module.exports = {
+  plugins: [
+    require('postcss-import'),
+    require('postcss-cssnext'),
+    require('postcss-custom-media')
+  ]
+};

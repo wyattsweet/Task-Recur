@@ -1,1 +1,11 @@
-/Users/wyattsweet/code/task_recur/node_modules/@wyattsweet/project-builder/src/webpack.dev.js
+const merge = require('webpack-merge');
+
+const common = require('./webpack.common.js');
+
+module.exports = merge(common, {
+  devtool: 'cheap-eval-source-map',
+  devServer: {
+    publicPath: '/public/',
+    historyApiFallback: true
+  }
+});

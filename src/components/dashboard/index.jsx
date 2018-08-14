@@ -5,10 +5,11 @@ import Header from '../Header'
 import Provider from '../Provider'
 // import TaskSection from '../TaskSection'
 // import TimeFrameGroup from '../TimeFrameGroup'
-import Tabs from '../sitewide/Tabs'
-import Tab from '../sitewide/Tabs/Tab'
-import TabContent from '../sitewide/Tabs/TabContent'
-import TabRow from '../sitewide/Tabs/TabRow'
+import Tabs from './Tabs'
+import Tab from './Tabs/Tab'
+import TabContent from './Tabs/TabContent'
+import TabRow from './Tabs/TabRow'
+import Task from './Task'
 import User from '../User'
 
 import localStorageHelper from '../../helpers/localStorage'
@@ -29,7 +30,9 @@ const Dashboard = () => {
               <Tab label="weekly" />
               <Tab label="monthly" />
             </TabRow>
-            <TabContent />
+            <TabContent>
+              <Task title={'Hang Shelves'} />
+            </TabContent>
           </Tabs>
         </div>
       </Provider>

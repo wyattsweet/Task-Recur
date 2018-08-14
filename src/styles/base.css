@@ -8,6 +8,7 @@ div {
 body {
   background: var(--color-grey-l);
   color: var(--color-black-p);
+  height: 100%;
   font-family: 'Hind', sans-serif;
   font-size: 18px;
   font-weight: var(--font-weight-regular);
@@ -38,4 +39,8 @@ button {
 
 button:focus {
   outline: none;
+}
+
+#root {
+  height: 100%;
 }

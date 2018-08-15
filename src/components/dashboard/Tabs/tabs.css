@@ -1,6 +1,12 @@
 .tabs {
-  display: inline-block;
-  margin-top: 64px;
-  width: 1000px;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  max-width: 1000px;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
   text-align: left;
+  top: 140px;
+  width: 90%;
 }

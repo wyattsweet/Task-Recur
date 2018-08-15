@@ -32,6 +32,7 @@ const Dashboard = () => {
             </TabRow>
             <TabContent>
               <Task title={'Hang Shelves'} />
+              <Task title={'Something else'} />
             </TabContent>
           </Tabs>
         </div>

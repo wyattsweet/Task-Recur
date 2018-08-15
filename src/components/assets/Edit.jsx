@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Edit = () => {
+const Edit = ({ customStyleObject }) => {
   return (
     <svg
+      style={customStyleObject}
       width="20"
       height="20"
       viewBox="0 0 20 20"

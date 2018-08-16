@@ -5,6 +5,7 @@ import Delete from '../../assets/Close'
 import Edit from '../../assets/Edit'
 import Minus from '../../assets/Minus'
 import Plus from '../../assets/Plus'
+import RecurButton from '../RecurButton'
 
 import styles from './styles.css'
 
@@ -15,6 +16,7 @@ const Task = ({ title }) => {
       <Minus />
       <input type="checkbox" />
       <Plus />
+      <RecurButton />
       <Edit customStyleObject={{ margin: '0 5px 0 auto' }} />
       <Delete />
     </div>

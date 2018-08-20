@@ -17,7 +17,7 @@ const Task = ({ title }) => {
       <input type="checkbox" />
       <Plus />
       <RecurButton />
-      <Edit customStyleObject={{ margin: '0 5px 0 auto' }} />
+      <Edit customStyleObject={{ margin: '0 5px 0 0' }} />
       <Delete />
     </div>
   )

@@ -1,0 +1,12 @@
+@import url('../../../styles/index.css');
+
+.taskWrapper {
+  align-items: center;
+  display: flex;
+  padding: 11px;
+  border-bottom: 1px solid var(--color-grey-d);
+}
+
+.taskWrapper:last-child {
+  border-bottom: none;
+}

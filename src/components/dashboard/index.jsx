@@ -3,14 +3,14 @@ import { Redirect } from 'react-router-dom'
 
 import Header from '../Header'
 import Provider from '../Provider'
-// import TaskSection from '../TaskSection'
-// import TimeFrameGroup from '../TimeFrameGroup'
+import AddButton from '../assets/AddButton'
 import Tabs from './Tabs'
 import Tab from './Tabs/Tab'
 import TabContent from './Tabs/TabContent'
 import TabRow from './Tabs/TabRow'
 import Task from './Task'
 import User from '../User'
+import TaskWrapper from './TaskWrapper'
 
 import localStorageHelper from '../../helpers/localStorage'
 
@@ -31,8 +31,15 @@ const Dashboard = () => {
               <Tab label="monthly" />
             </TabRow>
             <TabContent>
-              <Task title={'Hang Shelves'} />
-              <Task title={'Something else'} />
+              <TaskWrapper>
+                <Task title="Hang Shelves" />
+              </TaskWrapper>
+              <TaskWrapper>
+                <Task title="Something else" />
+              </TaskWrapper>
+              <TaskWrapper>
+                <AddButton />
+              </TaskWrapper>
             </TabContent>
           </Tabs>
         </div>

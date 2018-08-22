@@ -11,7 +11,7 @@ import styles from './styles.css'
 
 const Task = ({ title }) => {
   return (
-    <div className={styles.task}>
+    <React.Fragment>
       <h1 className={styles.title}>{title}</h1>
       <Minus />
       <input type="checkbox" />
@@ -19,7 +19,7 @@ const Task = ({ title }) => {
       <RecurButton />
       <Edit customStyleObject={{ margin: '0 5px 0 0' }} />
       <Delete />
-    </div>
+    </React.Fragment>
   )
 }
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 
+import AddTask from './AddTask'
 import Header from '../Header'
 import Provider from '../Provider'
-import AddButton from '../assets/AddButton'
 import Tabs from './Tabs'
 import Tab from './Tabs/Tab'
 import TabContent from './Tabs/TabContent'
@@ -38,7 +38,7 @@ const Dashboard = () => {
                 <Task title="Something else" />
               </TaskWrapper>
               <TaskWrapper>
-                <AddButton />
+                <AddTask />
               </TaskWrapper>
             </TabContent>
           </Tabs>

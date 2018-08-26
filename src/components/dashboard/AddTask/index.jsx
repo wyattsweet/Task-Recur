@@ -2,11 +2,13 @@ import React from 'react'
 
 import AddButton from '../../assets/AddButton'
 
+import styles from './styles.css'
+
 const AddTask = () => {
   return (
     <React.Fragment>
       <AddButton />
-      <input type="text" />
+      <input className={styles.input} type="text" />
     </React.Fragment>
   )
 }

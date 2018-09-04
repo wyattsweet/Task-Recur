@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './tabs.css'
 
-const Tabs = ({ children }) => {
-  return <div className={styles.tabs}>{children}</div>
+const Tabs = (props) => {
+  return <div className={styles.tabs}>{props.children}</div>
 }
 
 export default Tabs

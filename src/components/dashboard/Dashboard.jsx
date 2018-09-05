@@ -11,7 +11,7 @@ import TaskWrapper from './TaskWrapper'
 
 import styles from './dashboard.css'
 
-const Dashboard = () => {
+const Dashboard = ({ tasks }) => {
   return (
     <div className={styles.root}>
       <Header />
@@ -22,12 +22,13 @@ const Dashboard = () => {
           <Tab label="monthly" />
         </TabRow>
         <TabContent>
-          <TaskWrapper>
-            <Task title="Hang Shelves" />
-          </TaskWrapper>
-          <TaskWrapper>
-            <Task title="Something else" />
-          </TaskWrapper>
+          {tasks.map((task) => {
+            return (
+              <TaskWrapper>
+                <Task title={task.title} />
+              </TaskWrapper>
+            )
+          })}
           <TaskWrapper>
             <AddTask />
           </TaskWrapper>

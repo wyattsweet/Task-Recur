@@ -4,9 +4,7 @@ import { BrowserRouter, Redirect, Route } from 'react-router-dom'
 import localStorageHelper from '../helpers/localStorage'
 
 import Authentication from './Authentication'
-import WithProvider from './dashboard'
-
-// TODO: if token is expired: delete and redirect to /login
+import DashboardContainer from './dashboard'
 
 const App = () => {
   const token = localStorageHelper.fetchToken()
@@ -20,7 +18,7 @@ const App = () => {
             token ? <Redirect to="/dashboard" /> : <Authentication />
           }
         />
-        <Route path="/dashboard" component={WithProvider} />
+        <Route path="/dashboard" component={DashboardContainer} />
       </div>
     </BrowserRouter>
   )

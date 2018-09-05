@@ -11,31 +11,38 @@ import TaskWrapper from './TaskWrapper'
 
 import styles from './dashboard.css'
 
-const Dashboard = ({ tasks }) => {
-  return (
-    <div className={styles.root}>
+class Dashboard extends React.Component {
+  componentWillMount() {
+    this.props.subscribeToNewTasks()
+  }
+
+  render() {
+    const { tasks } = this.props
+    return (
+      <div className={styles.root}>
       <Header />
       <TabsWithData>
         <TabRow>
           <Tab label="daily" />
           <Tab label="weekly" />
           <Tab label="monthly" />
-        </TabRow>
-        <TabContent>
-          {tasks.map((task) => {
-            return (
-              <TaskWrapper>
-                <Task title={task.title} />
-              </TaskWrapper>
-            )
-          })}
-          <TaskWrapper>
-            <AddTask />
+      </TabRow>
+      <TabContent>
+      {tasks.map((task) => {
+        return (
+          <TaskWrapper key={task.id}>
+            <Task title={task.title} />
           </TaskWrapper>
-        </TabContent>
+        )
+      })}
+      <TaskWrapper>
+        <AddTask />
+      </TaskWrapper>
+    </TabContent>
       </TabsWithData>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 export default Dashboard

@@ -17,7 +17,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { tasks } = this.props
+    const { onDelete, tasks } = this.props
     return (
       <div className={styles.root}>
       <Header />
@@ -31,7 +31,7 @@ class Dashboard extends React.Component {
       {tasks.map((task) => {
         return (
           <TaskWrapper key={task.id}>
-            <Task title={task.title} />
+            <Task id={task.id} onDelete={onDelete} title={task.title} />
           </TaskWrapper>
         )
       })}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Delete from '../../assets/Close'
+import Delete from '../../assets/DeleteX'
 // import DragGrip from '../../assets/DragGrip'
 import Edit from '../../assets/Edit'
 import Minus from '../../assets/Minus'
@@ -9,7 +9,7 @@ import RecurButton from '../RecurButton'
 
 import styles from './styles.css'
 
-const Task = ({ title }) => {
+const Task = ({ id, onDelete, title }) => {
   return (
     <React.Fragment>
       <h1 className={styles.title}>{title}</h1>
@@ -18,7 +18,7 @@ const Task = ({ title }) => {
       <Plus />
       <RecurButton />
       <Edit customStyleObject={{ margin: '0 5px 0 0' }} />
-      <Delete />
+      <Delete id={id} onDelete={onDelete} />
     </React.Fragment>
   )
 }

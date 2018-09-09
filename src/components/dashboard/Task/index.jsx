@@ -9,18 +9,27 @@ import RecurButton from '../RecurButton'
 
 import styles from './styles.css'
 
-const Task = ({ id, onDelete, title }) => {
-  return (
-    <React.Fragment>
-      <h1 className={styles.title}>{title}</h1>
+class Task extends React.Component {
+  handleDelete = (task) => {
+    this.props.onDelete(task)
+  }
+
+  render() {
+    const { task } = this.props
+    return (
+      <React.Fragment>
+      <h1 className={styles.title}>{task.title}</h1>
       <Minus />
       <input type="checkbox" />
       <Plus />
       <RecurButton />
       <Edit customStyleObject={{ margin: '0 5px 0 0' }} />
-      <Delete id={id} onDelete={onDelete} />
-    </React.Fragment>
-  )
+      <button onClick={this.handleDelete.bind(this, task)}>
+        <Delete />
+      </button>
+      </React.Fragment>
+    )
+  }
 }
 
 export default Task

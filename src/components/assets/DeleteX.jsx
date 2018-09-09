@@ -1,10 +1,7 @@
 import React from 'react'
 
-import styles from './deleteX.css'
-
-const Delete = ({ id, onDelete }) => {
+const Delete = () => {
   return (
-    <div data-id={id} className={styles.wrapper} onClick={onDelete}>
       <svg
         width="20"
         height="20"
@@ -17,7 +14,6 @@ const Delete = ({ id, onDelete }) => {
           fill="#4F4F4F"
         />
       </svg>
-    </div>
   )
 }
 

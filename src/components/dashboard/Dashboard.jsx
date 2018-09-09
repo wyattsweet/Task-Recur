@@ -20,26 +20,30 @@ class Dashboard extends React.Component {
     const { onDelete, tasks } = this.props
     return (
       <div className={styles.root}>
-      <Header />
-      <TabsWithData>
-        <TabRow>
-          <Tab label="daily" />
-          <Tab label="weekly" />
-          <Tab label="monthly" />
-      </TabRow>
-      <TabContent>
-      {tasks.map((task) => {
-        return (
-          <TaskWrapper key={task.id}>
-            <Task id={task.id} onDelete={onDelete} title={task.title} />
-          </TaskWrapper>
-        )
-      })}
-      <TaskWrapper>
-        <AddTask />
-      </TaskWrapper>
-    </TabContent>
-      </TabsWithData>
+        <Header />
+        <TabsWithData>
+          <TabRow>
+            <Tab label="daily" />
+            <Tab label="weekly" />
+            <Tab label="monthly" />
+          </TabRow>
+          <TabContent>
+            {tasks
+              .filter(task => {
+                return task.active
+              })
+              .map(task => {
+                return (
+                  <TaskWrapper key={task.id}>
+                    <Task task={task} onDelete={onDelete} />
+                  </TaskWrapper>
+                )
+              })}
+            <TaskWrapper>
+              <AddTask />
+            </TaskWrapper>
+          </TabContent>
+        </TabsWithData>
       </div>
     )
   }

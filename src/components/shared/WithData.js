@@ -2,7 +2,7 @@ import { compose, graphql } from 'react-apollo'
 
 import AllTasksQuery from '../../queries/AllTasksQuery'
 import CreateTaskSub from '../../queries/CreateTaskSubscription'
-import DeleteTaskMutation from '../../queries/DeleteTask'
+import DeactivateTask from '../../queries/DeactivateTask'
 
 const WithData = component => {
   return compose(
@@ -30,11 +30,11 @@ const WithData = component => {
       }),
     }),
 
-    graphql(DeleteTaskMutation, {
+    graphql(DeactivateTask, {
       props: (props) => ({
         onDelete: (task) => props.mutate({
           variables: { id: task.id },
-          optimisticResponse: () => ({ deletePost: { ...task }})
+          optimisticResponse: () => ({ updateTask: { ...task }})
         })
       })
     })

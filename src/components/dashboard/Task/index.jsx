@@ -7,6 +7,7 @@ import EditTask from './EditTask'
 import Minus from '../../assets/Minus'
 import Plus from '../../assets/Plus'
 import RecurButton from '../RecurButton'
+import TaskTitle from './TaskTitle'
 
 import styles from './styles.css'
 
@@ -43,7 +44,7 @@ class Task extends React.Component {
         {editTaskViewable ? (
           <EditTask handleEdit={this.handleEdit} handleTitleChange={this.handleTitleChange} id={task.id} title={title} />
         ) : (
-          <h1 className={styles.title}>{title}</h1>
+          <TaskTitle title={title} />
         )}
         <Minus />
         <input type="checkbox" />

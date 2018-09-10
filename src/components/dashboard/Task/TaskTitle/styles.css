@@ -1,0 +1,7 @@
+@import url('../../../../styles/index.css');
+
+.title {
+  font-size: var(--font-size-regular);
+  font-weight: var(--font-weight-regular);
+  width: 163px;
+}

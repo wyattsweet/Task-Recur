@@ -29,6 +29,7 @@ class Dashboard extends React.Component {
           </TabRow>
           <TabContent>
             {tasks
+              // TODO: the query should filter out active tasks, but I couldn't get it to work
               .filter(task => {
                 return task.active
               })

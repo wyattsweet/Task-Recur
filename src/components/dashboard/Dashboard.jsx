@@ -3,7 +3,7 @@ import React from 'react'
 import AddTask from './AddTask'
 import Header from '../Header'
 import Tab from './Tabs/Tab'
-import TabsWithData from './Tabs/TabsWithData'
+import Tabs from './Tabs'
 import TabContent from './Tabs/TabContent'
 import TabRow from './Tabs/TabRow'
 import Task from './Task'
@@ -17,34 +17,32 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { onDelete, tasks } = this.props
+    const { onDelete, data } = this.props
     return (
       <div className={styles.root}>
         <Header />
-        <TabsWithData>
+        <Tabs>
           <TabRow>
             <Tab label="daily" />
             <Tab label="weekly" />
             <Tab label="monthly" />
           </TabRow>
           <TabContent>
-            {tasks
-              // TODO: the query should filter out active tasks, but I couldn't get it to work
-              .filter(task => {
-                return task.active
-              })
-              .map(task => {
-                return (
-                  <TaskWrapper key={task.id}>
-                    <Task task={task} onDelete={onDelete} />
-                  </TaskWrapper>
-                )
-              })}
+            {data.loading
+              ? null
+              : data.listTasks.items
+                  .map(task => {
+                    return (
+                      <TaskWrapper key={task.id}>
+                        <Task task={task} onDelete={onDelete} />
+                      </TaskWrapper>
+                    )
+                  })}
             <TaskWrapper>
               <AddTask />
             </TaskWrapper>
           </TabContent>
-        </TabsWithData>
+        </Tabs>
       </div>
     )
   }

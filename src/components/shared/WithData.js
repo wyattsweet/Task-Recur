@@ -11,7 +11,6 @@ const WithData = component => {
         fetchPolicy: 'cache-and-network',
       },
       props: props => ({
-        // tasks: props.data.listTasks.items,
         data: props.data,
         subscribeToNewTasks: () => {
           props.data.subscribeToMore({

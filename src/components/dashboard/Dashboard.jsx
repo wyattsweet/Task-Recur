@@ -13,7 +13,7 @@ import styles from './dashboard.css'
 
 class Dashboard extends React.Component {
   componentWillMount() {
-    this.props.subscribeToNewTasks()
+    // this.props.subscribeToNewTasks()
   }
 
   render() {

@@ -4,7 +4,7 @@ import styles from './styles.css'
 
 const RecurButton = () => {
   // TODO: replace this with a true unique id generator
-  const uniqId = Math.ceil(Math.random() * 10)
+  const uniqId = Math.ceil(Math.random() * 1000)
 
   return (
     <div className={styles.container}>

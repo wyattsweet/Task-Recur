@@ -30,10 +30,23 @@ class Task extends React.Component {
     this.setState({ editTaskViewable: !editTaskViewable })
   }
 
-  handleEdit = (id, title, e) => {
+  handleEdit = (
+    title = this.props.task.title,
+    recurring = this.props.task.recurring,
+    e,
+  ) => {
     e.preventDefault()
-    this.props.onUpdate(id, title)
+    const newTask = {
+      ...this.props.task,
+      title,
+      recurring
+    }
+    this.props.onUpdate(newTask)
     this.toggleEditView()
+  }
+
+  handleRecurChange = () => {
+    console.log('changing')
   }
 
   render() {
@@ -42,14 +55,22 @@ class Task extends React.Component {
     return (
       <React.Fragment>
         {editTaskViewable ? (
-          <EditTask handleEdit={this.handleEdit} handleTitleChange={this.handleTitleChange} id={task.id} title={title} />
+          <EditTask
+            handleEdit={this.handleEdit}
+            handleTitleChange={this.handleTitleChange}
+            title={title}
+          />
         ) : (
           <TaskTitle title={title} />
         )}
         <Minus />
         <input type="checkbox" />
         <Plus />
-        <RecurButton title={task.title} recurring={task.recurring} />
+        <RecurButton
+          handleRecurChange={this.handleRecurChange}
+          title={task.title}
+          recurring={task.recurring}
+        />
         <button onClick={this.toggleEditView}>
           <Edit customStyleObject={{ margin: '0 5px 0 0' }} />
         </button>

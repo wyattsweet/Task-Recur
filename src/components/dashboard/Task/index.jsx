@@ -49,7 +49,7 @@ class Task extends React.Component {
         <Minus />
         <input type="checkbox" />
         <Plus />
-        <RecurButton />
+        <RecurButton title={task.title} recurring={task.recurring} />
         <button onClick={this.toggleEditView}>
           <Edit customStyleObject={{ margin: '0 5px 0 0' }} />
         </button>

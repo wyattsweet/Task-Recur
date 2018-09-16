@@ -7,6 +7,7 @@ query ListTasks {
       id
       active
       title
+      recurring
     }
   }
 }

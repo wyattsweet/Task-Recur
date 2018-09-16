@@ -1,6 +1,8 @@
-`mutation CreateTask {
+import gql from 'graphql-tag'
+
+export default gql`mutation CreateTask($title: String) {
   createTask(input: {
-    title: "test task",
+    title: $title,
     timeframe: weekly,
     occurrences: 1,
     occurrencesRemaining: 1,
@@ -8,8 +10,8 @@
     active: true,
     recurring: true
   }) {
+    id
     title
-    timeframe
-    occurrences
+    active
   }
 }`

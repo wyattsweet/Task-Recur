@@ -1,9 +1,12 @@
 import { compose, graphql } from 'react-apollo'
 
 import AllTasksQuery from '../../queries/AllTasksQuery'
+import CreateTask from '../../queries/CreateTask'
 import CreateTaskSub from '../../queries/CreateTaskSubscription'
 import DeactivateTask from '../../queries/DeactivateTask'
 import UpdateTask from '../../queries/UpdateTask'
+
+import { generateUniqId } from '../../helpers/utils'
 
 const WithData = component => {
   return compose(
@@ -34,7 +37,12 @@ const WithData = component => {
       props: (props) => ({
         onDelete: (task) => props.mutate({
           variables: { id: task.id },
-          optimisticResponse: () => ({ updateTask: { ...task }})
+          optimisticResponse: {
+            updateTask: {
+              ...task,
+              active: false,
+            }
+          }
         })
       })
     }),
@@ -47,6 +55,23 @@ const WithData = component => {
             updateTask: {
               id,
               title,
+              active: true,
+              __typename: 'Task'
+            }
+          } 
+        })
+      })
+    }),
+
+    graphql(CreateTask, {
+      props: props => ({
+        onCreate: title => props.mutate({
+          variables: { title },
+          optimisticResponse: {
+            createTask: {
+              id: generateUniqId(),
+              title,
+              active: true,
               __typename: 'Task'
             }
           } 

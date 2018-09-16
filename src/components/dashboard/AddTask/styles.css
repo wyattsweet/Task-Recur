@@ -1,8 +1,12 @@
+.form {
+  width: 100%; 
+}
+
 .input {
   border: none;
   font-size: 18px;
   margin-left: 11px;
-  width: 100%; 
+  width: 100%;
 }
 
 .input:focus {

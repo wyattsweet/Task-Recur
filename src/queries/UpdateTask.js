@@ -5,6 +5,7 @@ export default gql`
     updateTask(input: {id: $id, title: $title}) {
       id
       title
+      active
     }
   }
 `

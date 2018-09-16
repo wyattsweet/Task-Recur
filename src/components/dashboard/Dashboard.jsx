@@ -17,7 +17,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { data, onDelete, onUpdate } = this.props
+    const { data, onCreate, onDelete, onUpdate } = this.props
     return (
       <div className={styles.root}>
         <Header />
@@ -31,6 +31,7 @@ class Dashboard extends React.Component {
             {data.loading
               ? null
               : data.listTasks.items
+                  .filter(task => task.active)
                   .map(task => {
                     return (
                       <TaskWrapper key={task.id}>
@@ -39,7 +40,7 @@ class Dashboard extends React.Component {
                     )
                   })}
             <TaskWrapper>
-              <AddTask />
+              <AddTask onCreate={onCreate} />
             </TaskWrapper>
           </TabContent>
         </Tabs>

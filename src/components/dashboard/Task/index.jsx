@@ -30,23 +30,25 @@ class Task extends React.Component {
     this.setState({ editTaskViewable: !editTaskViewable })
   }
 
-  handleEdit = (
+  handleEdit = ({
     title = this.props.task.title,
-    recurring = this.props.task.recurring,
     e,
-  ) => {
+  }) => {
     e.preventDefault()
     const newTask = {
       ...this.props.task,
-      title,
-      recurring
+      title
     }
     this.props.onUpdate(newTask)
     this.toggleEditView()
   }
 
-  handleRecurChange = () => {
-    console.log('changing')
+  handleRecurChange = (e) => {
+    const newTask = {
+      ...this.props.task,
+      recurring: e.target.checked
+    }
+    this.props.onUpdate(newTask)
   }
 
   render() {
@@ -68,7 +70,6 @@ class Task extends React.Component {
         <Plus />
         <RecurButton
           handleRecurChange={this.handleRecurChange}
-          title={task.title}
           recurring={task.recurring}
         />
         <button onClick={this.toggleEditView}>

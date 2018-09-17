@@ -53,9 +53,9 @@ const WithData = component => {
           variables: {id: task.id, title: task.title, recurring: task.recurring},
           optimisticResponse: {
             updateTask: {
-              id: task.id,
+              id: generateUniqId(),
               title: task.title,
-              active: true,
+              active: task.recurring,
               recurring: task.recurring,
               __typename: 'Task'
             }

@@ -2,12 +2,19 @@ import React from 'react'
 
 import styles from './styles.css'
 
+import { generateUniqId } from '../../../helpers/utils'
+
 const RecurButton = ({ handleRecurChange, recurring }) => {
-  // TODO: replace this with a true unique id generator
-  const uniqId = Math.ceil(Math.random() * 1000)
+  const uniqId = generateUniqId()
   return (
     <div className={styles.container}>
-      <input onChange={handleRecurChange} value={true} id={uniqId} className={styles.input} type="checkbox" defaultChecked={recurring} />
+      <input
+        onChange={handleRecurChange}
+        id={uniqId}
+        className={styles.input}
+        type="checkbox"
+        defaultChecked={recurring}
+      />
       <label htmlFor={uniqId} className={styles.label}>
         <span className={styles.inner} />
       </label>

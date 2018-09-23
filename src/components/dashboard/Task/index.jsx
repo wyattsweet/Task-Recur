@@ -2,7 +2,6 @@ import React from 'react'
 
 import Delete from '../../assets/DeleteX'
 // import DragGrip from '../../assets/DragGrip'
-import DecrementOccurrence from './DecrementOccurrence'
 import Edit from '../../assets/Edit'
 import EditTask from './EditTask'
 import Occurrences from './Occurrences'

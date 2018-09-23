@@ -2,10 +2,10 @@ import React from 'react'
 
 import Delete from '../../assets/DeleteX'
 // import DragGrip from '../../assets/DragGrip'
+import DecrementOccurrence from './DecrementOccurrence'
 import Edit from '../../assets/Edit'
 import EditTask from './EditTask'
-import Minus from '../../assets/Minus'
-import Plus from '../../assets/Plus'
+import Occurrences from './Occurrences'
 import RecurButton from '../RecurButton'
 import TaskTitle from './TaskTitle'
 
@@ -65,9 +65,7 @@ class Task extends React.Component {
         ) : (
           <TaskTitle title={title} />
         )}
-        <Minus />
-        <input type="checkbox" />
-        <Plus />
+        <Occurrences />
         <RecurButton
           handleRecurChange={this.handleRecurChange}
           recurring={task.recurring}

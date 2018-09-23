@@ -1,13 +1,16 @@
 import React from 'react'
+import { times } from 'lodash'
+
+import { generateUniqId } from '../../../../helpers/utils'
 
 import DecrementOccurrence from './DecrementOccurrence'
 import IncrementOccurrence from './IncrementOccurrence'
 
-const Occurrences = () => {
+const Occurrences = ({ occurrences }) => {
   return (
     <React.Fragment>
-      <DecrementOccurrence />    
-      <input type="checkbox" />
+      <DecrementOccurrence />
+      {times(occurrences, () => <input key={generateUniqId()} type="checkbox" />)}
       <IncrementOccurrence />
     </React.Fragment>
   )

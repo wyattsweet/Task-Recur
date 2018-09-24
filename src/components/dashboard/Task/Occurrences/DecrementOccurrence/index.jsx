@@ -2,9 +2,9 @@ import React from 'react'
 
 import Minus from '../../../../assets/Minus'
 
-const DecrementOccurrence = () => {
+const DecrementOccurrence = ({ onClick }) => {
   return (
-    <button>
+    <button onClick={onClick}>
       <Minus />
     </button>  
   )

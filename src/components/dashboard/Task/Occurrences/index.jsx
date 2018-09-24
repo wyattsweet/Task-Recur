@@ -19,11 +19,19 @@ class Occurrences extends React.Component {
     this.setState({ occurrences: updatedCount })
   }
 
+  handleDecrement = () => {
+    const { occurrences } = this.state
+    const updatedCount = occurrences - 1
+    if (updatedCount > 0) {
+      this.setState({ occurrences: updatedCount })
+    }
+  }
+
   render() {
     const { occurrences } = this.state
     return (
       <React.Fragment>
-      <DecrementOccurrence />
+      <DecrementOccurrence onClick={this.handleDecrement} />
       {times(occurrences, () => <input key={generateUniqId()} type="checkbox" />)}
       <IncrementOccurrence onClick={this.handleIncrement} />
       </React.Fragment>

@@ -2,9 +2,9 @@ import React from 'react'
 
 import Plus from '../../../../assets/Plus'
 
-const IncrementOccurrence = () => {
+const IncrementOccurrence = ({ onClick }) => {
   return (
-    <button>
+    <button onClick={onClick}>
       <Plus />
     </button> 
   )

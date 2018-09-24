@@ -64,7 +64,7 @@ class Task extends React.Component {
         ) : (
           <TaskTitle title={title} />
         )}
-        <Occurrences {...task} onUpdate={this.props.onUpdate} />
+        <Occurrences task={task} onUpdate={this.props.onUpdate} />
         <RecurButton
           handleRecurChange={this.handleRecurChange}
           recurring={task.recurring}

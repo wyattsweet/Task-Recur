@@ -10,20 +10,31 @@ class Occurrences extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      occurrences: props.occurrences
+      occurrences: props.task.occurrences
     }
   }
+
+  handleUpdate = (occurrences) => {
+    const newTask = {
+      ...this.props.task,
+      occurrences
+    }
+    this.setState({ occurrences }, () => {
+      this.props.onUpdate(newTask)
+    })
+  }
+
   handleIncrement = () => {
     const { occurrences } = this.state
     const updatedCount = occurrences + 1
-    this.setState({ occurrences: updatedCount })
+    this.handleUpdate(updatedCount)
   }
 
   handleDecrement = () => {
     const { occurrences } = this.state
     const updatedCount = occurrences - 1
     if (updatedCount > 0) {
-      this.setState({ occurrences: updatedCount })
+      this.handleUpdate(updatedCount)
     }
   }
 

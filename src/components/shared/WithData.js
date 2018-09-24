@@ -50,13 +50,14 @@ const WithData = component => {
     graphql(UpdateTask, {
       props: props => ({
         onUpdate: (task) => props.mutate({
-          variables: {id: task.id, title: task.title, recurring: task.recurring},
+          variables: {id: task.id, title: task.title, recurring: task.recurring, occurrences: task.occurrences},
           optimisticResponse: {
             updateTask: {
               id: generateUniqId(),
               title: task.title,
               active: task.recurring,
               recurring: task.recurring,
+              occurrences: task.occurrences,
               __typename: 'Task'
             }
           } 

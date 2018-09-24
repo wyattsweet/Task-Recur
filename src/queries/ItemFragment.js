@@ -1,11 +1,13 @@
 import gql from 'graphql-tag'
 
-export default gql`
-  fragment itemFields on Item {
-    active
+const ItemFieldsFragment = gql`
+  fragment itemFields on ListTasks {
     id
+    active
     occurrences
     recurring
     title
   }
 `
+
+export default ItemFieldsFragment

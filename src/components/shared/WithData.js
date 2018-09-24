@@ -71,6 +71,8 @@ const WithData = component => {
           optimisticResponse: {
             createTask: {
               id: generateUniqId(),
+              occurrences: 1,
+              recurring: false,
               title,
               active: true,
               __typename: 'Task'

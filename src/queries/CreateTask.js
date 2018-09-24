@@ -8,10 +8,12 @@ export default gql`mutation CreateTask($title: String) {
     occurrencesRemaining: 1,
     complete: false,
     active: true,
-    recurring: true
+    recurring: false
   }) {
     id
-    title
     active
+    occurrences
+    recurring
+    title
   }
 }`
